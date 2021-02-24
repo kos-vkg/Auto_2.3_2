@@ -3,6 +3,8 @@ package ru.netology.test;
 import org.junit.jupiter.api.*;
 import ru.netology.data.UserData;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -22,7 +24,7 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin());
         $("[data-test-id=password] input").setValue(user.getPassword());
         $("button[data-test-id=action-login]").click();
-        $(withText("Личный кабинет")).shouldBe(visible);
+        $(withText("Личный кабинет")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -31,7 +33,7 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin());
         $("[data-test-id=password] input").setValue(user.getPassword());
         $("button[data-test-id=action-login]").click();
-        $(withText("Пользователь заблокирован")).shouldBe(visible);
+        $(withText("Пользователь заблокирован")).shouldBe(visible,Duration.ofSeconds(15));
     }
 
     @Test
@@ -40,7 +42,7 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin() + "123");
         $("[data-test-id=password] input").setValue(user.getPassword());
         $("button[data-test-id=action-login]").click();
-        $(withText("Неверно указан логин или пароль")).shouldBe(visible);
+        $(withText("Неверно указан логин или пароль")).shouldBe(visible,Duration.ofSeconds(15));
     }
 
     @Test
@@ -49,6 +51,6 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin());
         $("[data-test-id=password] input").setValue(user.getPassword() + "456");
         $("button[data-test-id=action-login]").click();
-        $(withText("Неверно указан логин или пароль")).shouldBe(visible);
+        $(withText("Неверно указан логин или пароль")).shouldBe(visible,Duration.ofSeconds(15));
     }
 }
