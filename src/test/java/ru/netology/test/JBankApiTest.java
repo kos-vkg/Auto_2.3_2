@@ -33,7 +33,7 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin());
         $("[data-test-id=password] input").setValue(user.getPassword());
         $("button[data-test-id=action-login]").click();
-        $(withText("Пользователь заблокирован")).shouldBe(visible,Duration.ofSeconds(15));
+        $(withText("Пользователь заблокирован")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -42,7 +42,7 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin() + "123");
         $("[data-test-id=password] input").setValue(user.getPassword());
         $("button[data-test-id=action-login]").click();
-        $(withText("Неверно указан логин или пароль")).shouldBe(visible,Duration.ofSeconds(15));
+        $(withText("Неверно указан логин или пароль")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -51,6 +51,6 @@ class JBankApiTest {
         $("[data-test-id=login] input").setValue(user.getLogin());
         $("[data-test-id=password] input").setValue(user.getPassword() + "456");
         $("button[data-test-id=action-login]").click();
-        $(withText("Неверно указан логин или пароль")).shouldBe(visible,Duration.ofSeconds(15));
+        $(withText("Неверно указан логин или пароль")).shouldBe(visible, Duration.ofSeconds(15));
     }
 }

@@ -13,15 +13,15 @@ import static io.restassured.RestAssured.given;
 
 public class DataGenerator {
 
-    static final String mainUri = "http://localhost";
-    static final String mainUri2 = "/api/system/users";
-    static final Integer mainPort = 9999;
+    static final String MAIN_URI = "http://localhost";
+    static final String MAIN_URI_2 = "/api/system/users";
+    static final Integer MAIN_PORT = 9999;
 
     static Faker faker = new Faker(new Locale("en"));
 
     private static RequestSpecification requestSpec = new RequestSpecBuilder()
-            .setBaseUri(mainUri)
-            .setPort(mainPort)
+            .setBaseUri(MAIN_URI)
+            .setPort(MAIN_PORT)
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
@@ -31,7 +31,7 @@ public class DataGenerator {
                 .spec(requestSpec)
                 .body(user)
                 .when()
-                .post(mainUri2)
+                .post(MAIN_URI_2)
                 .then()
                 .statusCode(200);
     }
@@ -40,6 +40,5 @@ public class DataGenerator {
         UserData user = new UserData(faker.name().fullName(), faker.internet().password(), status);
         addUser(user);
         return user;
-
     }
 }
